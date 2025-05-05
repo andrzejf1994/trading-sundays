@@ -1,0 +1,8 @@
+{
+    "name": "Trading Sundays",
+    "content_in_root": true,
+    "domains": ["sensor", "binary_sensor"],
+    "homeassistant": "2022.12.0",
+    "zip_release": false,
+    "render_readme": true
+  }
