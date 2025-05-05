@@ -1,0 +1,10 @@
+{
+    "domain": "trading_sundays",
+    "name": "Trading Sundays",
+    "version": "1.0.0",
+    "documentation": "https://github.com/andrzejf1994/trading_sundays",
+    "requirements": [],
+    "dependencies": [],
+    "codeowners": ["@andrzejf1994"],
+    "config_flow": true
+  }

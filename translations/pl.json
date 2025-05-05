@@ -1,0 +1,21 @@
+{
+    "config": {
+      "step": {
+        "user": {
+          "title": "Konfiguracja NIedzieli Handlowych"
+        }
+      }
+    },
+    "entity": {
+      "sensor": {
+        "next": {
+          "name": "Następna Niedziela Handlowa"
+        }
+      },
+      "binary_sensor": {
+        "today": {
+          "name": "Niedziela Handlowa"
+        }
+      }
+    }
+  }

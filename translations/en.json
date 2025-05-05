@@ -1,0 +1,21 @@
+{
+    "config": {
+      "step": {
+        "user": {
+          "title": "Configure Trading Sundays"
+        }
+      }
+    },
+    "entity": {
+      "sensor": {
+        "next": {
+          "name": "Next Trading Sunday"
+        }
+      },
+      "binary_sensor": {
+        "today": {
+          "name": "Is Trading Sunday Today"
+        }
+      }
+    }
+  }
