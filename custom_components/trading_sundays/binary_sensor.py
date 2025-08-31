@@ -1,6 +1,9 @@
+import logging
 from datetime import date
 from homeassistant.components.binary_sensor import BinarySensorEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+
+_LOGGER = logging.getLogger(__name__)
 
 from .const import DOMAIN
 from .coordinator import TradingSundaysCoordinator
@@ -21,5 +24,15 @@ class TradingSundayTodayBinarySensor(CoordinatorEntity, BinarySensorEntity):
 
     def _handle_coordinator_update(self):
         today = date.today()
-        self._attr_is_on = (today.weekday() == 6 and today in self.coordinator.data)
+        is_sunday = today.weekday() == 6
+        in_trading_sundays = today in self.coordinator.data
+        self._attr_is_on = is_sunday and in_trading_sundays
+        
+        _LOGGER.debug(
+            "Binary sensor update - date: %s, is Sunday: %s, in trading Sundays: %s, final state: %s",
+            today,
+            is_sunday,
+            in_trading_sundays,
+            self._attr_is_on
+        )
         super()._handle_coordinator_update()

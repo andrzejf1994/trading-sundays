@@ -23,7 +23,13 @@ class TradingSundaysCoordinator(DataUpdateCoordinator):
         try:
             today = date.today()
             dates = calculate_trading_sundays(today.year) + calculate_trading_sundays(today.year + 1)
-            return sorted(dates)
+            sorted_dates = sorted(dates)
+            _LOGGER.debug(
+                "Trading Sundays data updated - today: %s, calculated dates: %s",
+                today,
+                sorted_dates
+            )
+            return sorted_dates
         except Exception as err:
             _LOGGER.error("Error updating trading Sundays: %s", err)
             raise UpdateFailed(err)
