@@ -3,7 +3,7 @@
 Custom integration for Home Assistant that provides:
 
 - 📅 **Sensor** `sensor.trading_sundays_next` — Displays the date (YYYY-MM-DD) of the next trading (open-for-trade) Sunday in Poland.
-- ✅ **Binary Sensor** `binary_sensor.trading_sundays_today` — Indicates whether today is a trading Sunday (ON if yes).
+- ✅ **Binary Sensor** `binary_sensor.is_trading_sunday_today` — Indicates whether today is a trading Sunday (ON if yes).
 
 This integration follows Home Assistant best practices, using a Config Flow and DataUpdateCoordinator.
 

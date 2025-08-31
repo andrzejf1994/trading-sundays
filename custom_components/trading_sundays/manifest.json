@@ -1,7 +1,7 @@
 {
   "domain": "trading_sundays",
   "name": "Trading Sundays",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "documentation": "https://github.com/andrzejf1994/trading-sundays",
   "issue_tracker": "https://github.com/andrzejf1994/trading-sundays/issues",
   "codeowners": ["@andrzejf1994"],
