@@ -19,15 +19,16 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     hass.data.setdefault(DOMAIN, {})[entry.entry_id] = coordinator
 
     # Forward setup to sensor and binary_sensor platforms
-    await hass.config_entries.async_forward_entry_setup(entry, "sensor")
-    await hass.config_entries.async_forward_entry_setup(entry, "binary_sensor")
+    await hass.config_entries.async_forward_entry_setups(entry, ["sensor", "binary_sensor"])
     return True
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Unload a config entry."""
     # Forward unload to platforms
-    unload_sensor = await hass.config_entries.async_forward_entry_unload(entry, "sensor")
-    unload_binary = await hass.config_entries.async_forward_entry_unload(entry, "binary_sensor")
+    unload_ok = await hass.config_entries.async_unload_platforms(entry, ["sensor", "binary_sensor"])
+    if unload_ok:
+        hass.data[DOMAIN].pop(entry.entry_id)
+    return unload_ok
     unload_ok = unload_sensor and unload_binary
     if unload_ok:
         hass.data[DOMAIN].pop(entry.entry_id)
