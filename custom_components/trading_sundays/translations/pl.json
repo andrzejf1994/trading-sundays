@@ -16,6 +16,11 @@
         "today": {
           "name": "Niedziela Handlowa"
         }
+      },
+      "calendar": {
+        "calendar": {
+          "name": "Kalendarz Niedziel Handlowych"
+        }
       }
     }
   }

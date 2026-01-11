@@ -16,6 +16,11 @@
         "today": {
           "name": "Is Trading Sunday Today"
         }
+      },
+      "calendar": {
+        "calendar": {
+          "name": "Trading Sundays Calendar"
+        }
       }
     }
   }
