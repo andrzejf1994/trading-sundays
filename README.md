@@ -55,6 +55,7 @@ No additional options. The integration automatically calculates all trading Sund
 | ------------------------------------ | ------------- | --------------------------------------------- |
 | `sensor.trading_sundays_next`        | Sensor        | Date of the next trading Sunday (YYYY-MM-DD)  |
 | `binary_sensor.trading_sundays_today`| Binary Sensor | ON if today is a trading Sunday               |
+| `calendar.trading_sundays_calendar`  | Calendar      | All-day events for every trading Sunday       |
 
 Device classes, icons, and names are localized based on your Home Assistant language.
 

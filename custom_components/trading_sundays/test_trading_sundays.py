@@ -1,4 +1,5 @@
 from datetime import date
+
 from .utils import calculate_trading_sundays
 
 def test_august_2025():

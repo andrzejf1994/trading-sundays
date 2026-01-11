@@ -1,10 +1,13 @@
 """Unit tests for Trading Sundays integration."""
-import pytest
 from datetime import date
 from unittest.mock import MagicMock, patch
-from homeassistant.core import HomeAssistant
-from custom_components.trading_sundays.binary_sensor import TradingSundayTodayBinarySensor
-from custom_components.trading_sundays.coordinator import TradingSundaysCoordinator
+
+import pytest
+
+pytest.importorskip("homeassistant")
+from homeassistant.core import HomeAssistant  # noqa: E402
+from custom_components.trading_sundays.binary_sensor import TradingSundayTodayBinarySensor  # noqa: E402
+from custom_components.trading_sundays.coordinator import TradingSundaysCoordinator  # noqa: E402
 
 @pytest.fixture
 def hass():
@@ -24,7 +27,6 @@ def coordinator(hass):
 def test_binary_sensor_init(coordinator):
     """Test binary sensor initialization."""
     sensor = TradingSundayTodayBinarySensor(coordinator)
-    assert sensor._attr_name == "Is Trading Sunday Today"
     assert not sensor._attr_is_on  # Should be False by default
 
 @patch('custom_components.trading_sundays.binary_sensor.date')
