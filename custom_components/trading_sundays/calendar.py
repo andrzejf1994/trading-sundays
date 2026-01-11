@@ -31,6 +31,10 @@ class TradingSundaysCalendar(CoordinatorEntity, CalendarEntity):
         super().__init__(coordinator)
         self._attr_unique_id = f"{DOMAIN}_{entry_id}_calendar"
         self._event: Optional[CalendarEvent] = None
+
+    async def async_added_to_hass(self):
+        """Called when entity is added to Home Assistant."""
+        await super().async_added_to_hass()
         self._update_next_event()
 
     @property
@@ -38,10 +42,17 @@ class TradingSundaysCalendar(CoordinatorEntity, CalendarEntity):
         """Return the next upcoming trading Sunday as a calendar event."""
         return self._event
 
+    def _get_event_title(self) -> str:
+        """Return localized event title based on Home Assistant language."""
+        lang = self.hass.config.language
+        if lang == "pl":
+            return "Niedziela Handlowa"
+        return "Trading Sunday"
+
     def _create_event(self, trading_day: date) -> CalendarEvent:
         """Create an all-day calendar event for a trading Sunday."""
         return CalendarEvent(
-            summary=self.name or "Niedziela Handlowa",
+            summary=self._get_event_title(),
             start=trading_day,
             end=trading_day + timedelta(days=1),
         )
