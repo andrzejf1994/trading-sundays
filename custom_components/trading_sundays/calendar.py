@@ -41,7 +41,7 @@ class TradingSundaysCalendar(CoordinatorEntity, CalendarEntity):
     def _create_event(self, trading_day: date) -> CalendarEvent:
         """Create an all-day calendar event for a trading Sunday."""
         return CalendarEvent(
-            summary=self.name,
+            summary=self.name or "Niedziela Handlowa",
             start=trading_day,
             end=trading_day + timedelta(days=1),
         )
