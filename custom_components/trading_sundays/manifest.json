@@ -1,0 +1,14 @@
+{
+  "domain": "trading_sundays",
+  "name": "Trading Sundays",
+  "version": "1.0",
+  "documentation": "https://github.com/andrzejf1994/trading-sundays",
+  "issue_tracker": "https://github.com/andrzejf1994/trading-sundays/issues",
+  "codeowners": ["@andrzejf1994"],
+  "config_flow": true,
+  "requirements": [],
+  "dependencies": [],
+  "iot_class": "local_polling",
+  "integration_type": "service",
+  "homeassistant": "2023.1.0"
+}

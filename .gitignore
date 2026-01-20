@@ -1,0 +1,72 @@
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+
+# =====================
+# Virtual environments
+# =====================
+.venv/
+venv/
+env/
+
+# =====================
+# Editors / IDEs
+# =====================
+.vscode/
+!.vscode/extensions.json
+.idea/
+
+# =====================
+# macOS
+# =====================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# =====================
+# Windows
+# =====================
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# =====================
+# Logs / runtime
+# =====================
+*.log
+home-assistant.log*
+home-assistant_v2.db*
+.storage/
+
+# =====================
+# Tests / coverage
+# =====================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# =====================
+# Build artifacts
+# =====================
+dist/
+build/
+*.egg-info/
+
+# =====================
+# Temp / backup files
+# =====================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~

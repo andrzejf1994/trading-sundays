@@ -1,0 +1,31 @@
+{
+  "title": "Trading Sundays",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure Trading Sundays",
+        "description": "The integration works automatically after it is added. Confirm to finish setup."
+      }
+    },
+    "abort": {
+      "already_configured": "This integration is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next": {
+        "name": "Next Trading Sunday"
+      }
+    },
+    "binary_sensor": {
+      "today": {
+        "name": "Is Trading Sunday Today"
+      }
+    },
+    "calendar": {
+      "calendar": {
+        "name": "Trading Sundays Calendar"
+      }
+    }
+  }
+}

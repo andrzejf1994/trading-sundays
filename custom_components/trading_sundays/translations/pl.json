@@ -1,0 +1,31 @@
+{
+  "title": "Niedziele Handlowe",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Konfiguracja Niedzieli Handlowych",
+        "description": "Integracja działa automatycznie po dodaniu. Potwierdź, aby skonfigurować."
+      }
+    },
+    "abort": {
+      "already_configured": "Ta integracja jest już skonfigurowana."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next": {
+        "name": "Następna Niedziela Handlowa"
+      }
+    },
+    "binary_sensor": {
+      "today": {
+        "name": "Niedziela Handlowa"
+      }
+    },
+    "calendar": {
+      "calendar": {
+        "name": "Niedziele Handlowe"
+      }
+    }
+  }
+}
