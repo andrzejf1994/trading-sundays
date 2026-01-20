@@ -25,7 +25,7 @@ This integration follows Home Assistant best practices, using a Config Flow and 
 2. Click **+ Add** in the bottom right.  
 3. Search for `trading-sundays` or add custom repository URL:
    
-   [![Add to HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=andrzejf1994&repository=trading-sundays)
+   [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=andrzejf1994&repository=trading-sundays&category=integration)
 
 4. Click **Install** and restart Home Assistant when prompted.
 
