@@ -8,9 +8,6 @@ from homeassistant.core import HomeAssistant
 
 PLATFORMS = ("sensor", "binary_sensor", "calendar")
 
-async def async_setup(hass: HomeAssistant, config: dict[str, Any]) -> bool:
-    return True
-
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     from .coordinator import TradingSundaysCoordinator
 
