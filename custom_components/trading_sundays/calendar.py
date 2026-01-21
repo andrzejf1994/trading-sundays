@@ -13,12 +13,31 @@ from .translation import async_get_entity_name
 
 _LOGGER = logging.getLogger(__name__)
 
+_LOGGER.debug("[trading-sundays] Calendar module loaded")
+
 
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> bool:
     coordinator: TradingSundaysCoordinator = hass.data[DOMAIN][entry.entry_id]
-    async_add_entities([TradingSundaysCalendar(coordinator, entry.entry_id)], True)
+    _LOGGER.info(
+        "[trading-sundays] Calendar async_setup_entry called entry_id=%s",
+        entry.entry_id,
+    )
+    _LOGGER.debug(
+        "[trading-sundays] Calendar coordinator data_count=%s",
+        len(coordinator.data or []),
+    )
+    entities = [TradingSundaysCalendar(coordinator, entry.entry_id)]
+    _LOGGER.info(
+        "[trading-sundays] Adding calendar entities count=%s",
+        len(entities),
+    )
+    try:
+        async_add_entities(entities, True)
+    except Exception:
+        _LOGGER.exception("[trading-sundays] Adding calendar entities failed")
+        raise
     return True
 
 
@@ -31,6 +50,7 @@ class TradingSundaysCalendar(CoordinatorEntity, CalendarEntity):
         self.entity_id = "calendar.trading_sundays"
         self._attr_unique_id = f"{DOMAIN}_{entry_id}_calendar"
         self._event: CalendarEvent | None = None
+        _LOGGER.debug("[trading-sundays] Calendar entity initialized")
 
     async def async_added_to_hass(self) -> None:
         await super().async_added_to_hass()
@@ -62,11 +82,13 @@ class TradingSundaysCalendar(CoordinatorEntity, CalendarEntity):
 
     def _update_next_event(self):
         today = date.today()
-        # // Obrona przed None w danych koordynatora.
         data = self.coordinator.data or []
         next_trading_day = next((d for d in data if d >= today), None)
         self._event = self._create_event(next_trading_day) if next_trading_day else None
-        _LOGGER.debug("Next trading Sunday event updated: %s", self._event)
+        _LOGGER.debug(
+            "[trading-sundays] Next trading Sunday event updated event=%s",
+            self._event,
+        )
 
     async def async_get_events(
         self, hass: HomeAssistant, start_date: datetime, end_date: datetime
@@ -74,7 +96,6 @@ class TradingSundaysCalendar(CoordinatorEntity, CalendarEntity):
         start_day = start_date.date()
         end_day = end_date.date()
 
-        # // Lokalna zmienna ogranicza powtorne odwolania do koordynatora.
         data = self.coordinator.data or []
         events = [
             self._create_event(trading_day)
@@ -82,7 +103,7 @@ class TradingSundaysCalendar(CoordinatorEntity, CalendarEntity):
             if start_day <= trading_day <= end_day
         ]
         _LOGGER.debug(
-            "Calendar requested events between %s and %s: found %d",
+            "[trading-sundays] Calendar requested events between %s and %s found=%d",
             start_day,
             end_day,
             len(events),
@@ -92,3 +113,4 @@ class TradingSundaysCalendar(CoordinatorEntity, CalendarEntity):
     def _handle_coordinator_update(self):
         self._update_next_event()
         super()._handle_coordinator_update()
+        

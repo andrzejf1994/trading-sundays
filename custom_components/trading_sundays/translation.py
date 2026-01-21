@@ -7,7 +7,6 @@ from .const import DOMAIN
 async def _async_get_translation(
     hass: HomeAssistant, category: str, translation_key: str
 ) -> str | None:
-    # // Wspolna funkcja ogranicza duplikacje kodu.
     translations = await async_get_translations(
         hass,
         hass.config.language,
